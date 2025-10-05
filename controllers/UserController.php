@@ -1,10 +1,11 @@
 <?php
-require_once './models/User.php';
+require_once __DIR__ . '/../models/UserModel.php';
+
 
 class UserController {
 
     public function getUser() {
-        $user = new User("Lol");
-        require __DIR__ . "/../views/UserView.php";
+        $user = new UserModel("Lol");
+        return $user;
     }
 }
