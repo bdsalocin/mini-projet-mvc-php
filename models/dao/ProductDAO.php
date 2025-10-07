@@ -33,4 +33,10 @@ class ProductDAO {
         $stmt->execute(['id' => $id]); // Tu exécutes
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
+
+    public function deleteProduct() {
+        $query = "DELETE FROM `Products` WHERE id = id:";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute(['id' => $id]);
+    }
 }

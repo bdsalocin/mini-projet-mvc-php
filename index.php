@@ -6,21 +6,20 @@ require_once __DIR__ . '/BaseDeDonnees.php';
 require_once __DIR__ . '/models/dao/UserDAO.php';
 require_once __DIR__ . '/models/dao/ProductDAO.php';
 
-$action = $_GET['action'] ?? null;
+$action = $_GET['action'] ?? "users";
 
 $pdo = BaseDeDonnees::getConnexion();
-
 $userDao = new UserDAO($pdo);
 $users = $userDao->getAllUsers();
-$user = new UserController($userDao);
-// var_dump($users);
 
 $productDao = new ProductDAO($pdo);
 $products = $productDao->getAllProducts();
-$product = new ProductController($productDao);
+
+// var_dump($users);
 
 switch ($action) {
     case 'users':
+        $user = new UserController($userDao);
         $user->displayAllUsers();
         break;
 
@@ -33,8 +32,9 @@ switch ($action) {
         break;  
     
     case 'products':
-        $product->displayAllProducts();
-        break;
+      $product = new ProductController($productDao);
+      $product->displayAllProducts();
+      break;
 
     case 'productview' :
         $id = $_GET['id'] ?? null;
@@ -50,5 +50,8 @@ switch ($action) {
 }
 
 
+
+// Supprimer un user / produit -> action, id, methode dans DAO
+// ajout avec formulaire pour le produit
 
 ?>

@@ -11,6 +11,7 @@
 <p> Nom : <?= htmlspecialchars($productData->name, ENT_QUOTES, 'UTF-8') ?> </p>
 <p> Prix : <?= htmlspecialchars($productData->price, ENT_QUOTES, 'UTF-8') ?> euros </p>
 <p> Description : <?= htmlspecialchars($productData->description, ENT_QUOTES, 'UTF-8') ?> </p></br>
+<!-- <a href="index.php?action=deleteproductview&id=<? $product->id ?>"></a> -->
 <?php echo "---------------------------------------------------------\n" ?>
 <p>
         <a href="?action=products">Retour produits</a>
