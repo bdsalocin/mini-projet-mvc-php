@@ -8,8 +8,6 @@ require_once __DIR__ . '/models/dao/ProductDAO.php';
 
 $action = $_GET['action'] ?? 'null';
 
-$page = '';
-
 $pdo = BaseDeDonnees::getConnexion();
 
 
