@@ -9,6 +9,7 @@
 
 <p> Produit : <?= htmlspecialchars($userData->id, ENT_QUOTES, 'UTF-8') ?> </h1>
 <p> Nom : <?= htmlspecialchars($userData->name, ENT_QUOTES, 'UTF-8') ?> </h1></br>
+<p> Age : <?= htmlspecialchars($userData->age, ENT_QUOTES, 'UTF-8') ?> </h1></br>
 <?php echo "---------------------------------------------------------\n" ?>
 <p>
         <a href="?action=users">Retour utilisateurs</a>

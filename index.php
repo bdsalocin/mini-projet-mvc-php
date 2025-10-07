@@ -6,7 +6,7 @@ require_once __DIR__ . '/BaseDeDonnees.php';
 require_once __DIR__ . '/models/dao/UserDAO.php';
 require_once __DIR__ . '/models/dao/ProductDAO.php';
 
-$action = $_GET['action'] ?? 'products';
+$action = $_GET['action'] ?? 'null';
 
 $page = '';
 
@@ -48,9 +48,7 @@ switch ($action) {
         break; 
 
         default:
-        header("HTTP/1.0 404 Not Found");
-        $page = "views/404.php";
-        break;
+        null;
 }
 
 

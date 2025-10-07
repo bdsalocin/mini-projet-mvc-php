@@ -19,7 +19,7 @@ class UserDAO {
         $users = [];
 
         foreach ($data as $user) {
-            $user = new UserModel($user["id"], $user["name"]);
+            $user = new UserModel($user["id"], $user["name"], $user["age"]);
             $users[] = $user;
         }
         return $users;  
