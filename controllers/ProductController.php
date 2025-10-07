@@ -1,22 +1,18 @@
 <?php
 
+require_once __DIR__ . '/../models/dao/ProductDAO.php';
 require_once __DIR__ . '/../models/ProductModel.php'; 
 
 class ProductController {
 
-    public $products = [
-        "Pates" => 2,
-        "Lessive" => 8,
-        "Mangues" => 4,
-        "Eau" => 2
-    ];
+    public $productDao;
 
-    public function getProduct() {
-    $products = [];
+    public function __construct($productDao) {
+        $this->productDao = $productDao;
+    }
 
-        foreach($this->products as $title => $price) {
-            $products[] = new ProductModel($title, $price);
-        }
-        return $products;
+    public function displayAllProducts() {
+        $products = $this->productDao->getAllProducts();
+        require_once __DIR__ . '/../views/ProductsView.php';
     }
 }
