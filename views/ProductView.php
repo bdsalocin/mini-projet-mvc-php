@@ -7,11 +7,11 @@
 </head>
 <body>
 
-<p> Produit : <?= htmlspecialchars($productData->id, ENT_QUOTES, 'UTF-8') ?> </h1>
+<p> Produit : <?= htmlspecialchars($productData->id, ENT_QUOTES, 'UTF-8') ?> </p>
 <p> Nom : <?= htmlspecialchars($productData->name, ENT_QUOTES, 'UTF-8') ?> </p>
 <p> Prix : <?= htmlspecialchars($productData->price, ENT_QUOTES, 'UTF-8') ?> euros </p>
 <p> Description : <?= htmlspecialchars($productData->description, ENT_QUOTES, 'UTF-8') ?> </p></br>
-<!-- <a href="index.php?action=deleteproductview&id=<? $product->id ?>"></a> -->
+<a href="index.php?action=deleteproduct&id=<?= $productData->id ?>">Supprimer</a></br>
 <?php echo "---------------------------------------------------------\n" ?>
 <p>
         <a href="?action=products">Retour produits</a>

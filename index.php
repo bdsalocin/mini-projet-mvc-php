@@ -36,6 +36,25 @@ switch ($action) {
       $product->displayAllProducts();
       break;
 
+    case 'deleteproduct':
+      $id = $_GET['id'] ?? null;
+      if ($id) {
+      $productDao->deleteProduct($id);
+      } header("Location: index.php?action=products");
+      exit;
+      break;
+
+    case 'addproduct':
+      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $name = $_POST['name '] ?? '';
+        $price = $_POST['price'] ?? 0;
+        $description = $_POST['description'] ?? '';
+        $productDao->addProduct($name, $price, $description);
+        header("Location: index.php?action=products");
+        exit;
+      } 
+      break;
+
     case 'productview' :
         $id = $_GET['id'] ?? null;
         if ($id) {

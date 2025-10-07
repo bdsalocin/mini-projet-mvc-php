@@ -34,9 +34,15 @@ class ProductDAO {
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
-    public function deleteProduct() {
-        $query = "DELETE FROM `Products` WHERE id = id:";
+    public function deleteProduct($id) {
+        $query = "DELETE FROM `Products` WHERE id = :id";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute(['id' => $id]);
     }
+
+    public function addProduct($name, $price, $description) {
+        $query = "INSERT INTO `Products` (name, price, description) VALUES (:name, :price, :description)";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute(['name' => $name, 'price' => $price, 'description' => $description]);
+    } 
 }
