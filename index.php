@@ -37,7 +37,6 @@ switch ($action) {
     
     case 'products':
         $product->displayAllProducts();
-        $page = "views/ProductListView.php";
         break;
 
     case 'productview' :

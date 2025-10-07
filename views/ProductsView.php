@@ -12,6 +12,7 @@
     <p>Id produit : <?= htmlspecialchars($product->id, ENT_QUOTES, 'UTF-8') ?></p>
     <p>Nom du produit : <?= htmlspecialchars($product->name, ENT_QUOTES, 'UTF-8') ?></p>
     <p>Prix : <?= htmlspecialchars($product->price, ENT_QUOTES, 'UTF-8') ?> euros</p>
+    <p>Description : <?= htmlspecialchars($product->description, ENT_QUOTES, 'UTF-8') ?></p>
     <p><a href="index.php?action=productview&id=<?= $product->id ?>">Voir le produit</a></p>
     <?php echo "---------------------------------------------------------\n" ?>
 

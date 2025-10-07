@@ -21,7 +21,7 @@ class ProductDAO {
         $products = [];
 
         foreach ($data as $product) {
-            $product = new ProductModel($product["id"], $product["price"], $product["name"]);
+            $product = new ProductModel($product["id"], $product["price"], $product["name"], $product['description']);
             $products[] = $product;
         }
         return $products;  

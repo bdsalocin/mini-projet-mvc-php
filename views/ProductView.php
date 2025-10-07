@@ -8,7 +8,9 @@
 <body>
 
 <p> Produit : <?= htmlspecialchars($productData->id, ENT_QUOTES, 'UTF-8') ?> </h1>
-<p> Nom : <?= htmlspecialchars($productData->name, ENT_QUOTES, 'UTF-8') ?> </h1></br>
+<p> Nom : <?= htmlspecialchars($productData->name, ENT_QUOTES, 'UTF-8') ?> </p>
+<p> Prix : <?= htmlspecialchars($productData->price, ENT_QUOTES, 'UTF-8') ?> euros </p>
+<p> Description : <?= htmlspecialchars($productData->description, ENT_QUOTES, 'UTF-8') ?> </p></br>
 <?php echo "---------------------------------------------------------\n" ?>
 <p>
         <a href="?action=products">Retour produits</a>
