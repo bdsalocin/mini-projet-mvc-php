@@ -6,10 +6,9 @@ require_once __DIR__ . '/BaseDeDonnees.php';
 require_once __DIR__ . '/models/dao/UserDAO.php';
 require_once __DIR__ . '/models/dao/ProductDAO.php';
 
-$action = $_GET['action'] ?? 'null';
+$action = $_GET['action'] ?? null;
 
 $pdo = BaseDeDonnees::getConnexion();
-
 
 $userDao = new UserDAO($pdo);
 $users = $userDao->getAllUsers();
@@ -45,8 +44,9 @@ switch ($action) {
         }
         break; 
 
-        default:
-        null;
+    default:
+        http_response_code(404);
+        exit;
 }
 
 
