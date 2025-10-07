@@ -14,7 +14,7 @@
 
     <p>Id utilisateur : <?= htmlspecialchars($user->id, ENT_QUOTES, 'UTF-8') ?></p>
     <p>Utilisateurs : <?= htmlspecialchars($user->name, ENT_QUOTES, 'UTF-8') ?></p>
-    <p><a href="index.php?action=userview&id=<?= urlencode($user->id) ?>">Voir l'utilisateur</a></p>
+    <p><a href="index.php?action=userview&id=<?= $user->id ?>">Voir l'utilisateur</a></p>
     <?php echo "---------------------------------------------------------\n" ?>
     <?php endforeach ?>
     <p>
