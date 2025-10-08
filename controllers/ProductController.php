@@ -43,5 +43,4 @@ class ProductController {
         exit;
     }
 
-
 }
