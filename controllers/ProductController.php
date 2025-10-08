@@ -25,18 +25,16 @@ class ProductController {
     }
 
     public function addProduct() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $name = $_POST['name '] ?? '';
         $price = $_POST['price'] ?? 0;
         $description = $_POST['description'] ?? '';
         $this->productDao->addProduct($name, $price, $description);
         header("Location: index.php?action=products");
         exit;
-        } 
     }
 
-    public function deleteProduct() {
-        $id = $_GET['id'] ?? null;
+    public function deleteProduct() { // faire avec post
+        $id = $_POST['deleteproduct'] ?? null;
         if ($id) {
         $this->productDao->deleteProduct($id);
         } header("Location: index.php?action=products");

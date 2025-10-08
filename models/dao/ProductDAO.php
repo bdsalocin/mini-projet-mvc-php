@@ -27,14 +27,14 @@ class ProductDAO {
         return $products;  
     }
 
-    public function getProductById($id) {
+    public function getProductById(int $id) {
         $query = "SELECT * FROM `Products` WHERE id = :id"; // :id;  -> requete préparée https://www.php.net/manual/fr/pdo.prepared-statements.php
         $stmt = $this->pdo->prepare($query); // Tu prépares
         $stmt->execute(['id' => $id]); // Tu exécutes
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
-    public function deleteProduct($id) {
+    public function deleteProduct(int $id) {
         $query = "DELETE FROM `Products` WHERE id = :id";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute(['id' => $id]);
