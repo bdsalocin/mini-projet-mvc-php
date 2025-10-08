@@ -34,11 +34,22 @@ class ProductController {
     }
 
     public function deleteProduct() { // faire avec post
-        $id = $_POST['deleteproduct'] ?? null;
+        $id = $_POST['deleteproduct'] ?? 0;
         if ($id) {
         $this->productDao->deleteProduct($id);
-        } header("Location: index.php?action=products");
+        } 
+        header("Location: index.php?action=products");
         exit;
     }
+
+        public function updateProduct() {
+        $id = (int) ($_POST['updateproduct'] ?? 0);
+        $name = $_POST['name'] ?? '';
+        $price = $_POST['price'] ?? 0;
+        $description = $_POST['description'] ?? '';
+        $this->productDao->updateProduct($id, $name, $price, $description);
+        header("Location: index.php?action=products");
+        exit;
+        }
 
 }

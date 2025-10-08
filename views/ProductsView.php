@@ -23,13 +23,13 @@
 
 <form action="index.php?action=addproduct" method="post">
     <label>Nom du produit :</label>
-    <input name="name" id="name" type="text" /></br>
+    <input type="text" name="name" id="name" /></br>
 
     <label>Le prix :</label>
-    <input name="price" id="price" type="number" /></br>
+    <input type="number" name="price" id="price"/></br>
     
     <label>Description : </label>
-    <textarea name="description" id="description" type="textarea" /></textarea></br>
+    <textarea type="textarea" name="description" id="description"/></textarea></br>
 
     <button type="submit">Valider</button>
 </form>

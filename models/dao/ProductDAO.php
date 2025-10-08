@@ -45,4 +45,10 @@ class ProductDAO {
         $stmt = $this->pdo->prepare($query);
         $stmt->execute(['name' => $name, 'price' => $price, 'description' => $description]);
     } 
+
+      public function updateProduct($id, $name, $price, $description) {
+        $query = "UPDATE `Products` SET name = :name, price = :price, description = :description WHERE id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute(['id' => $id, 'name' => $name, 'price' => $price, 'description' => $description]);
+    } 
 }

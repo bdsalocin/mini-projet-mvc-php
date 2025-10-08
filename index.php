@@ -9,44 +9,59 @@ require_once __DIR__ . '/models/dao/ProductDAO.php';
 $action = $_GET['action'] ?? "users";
 
 $pdo = BaseDeDonnees::getConnexion();
-$userDao = new UserDAO($pdo);
-$users = $userDao->getAllUsers();
 
 $productDao = new ProductDAO($pdo);
+$productController = new ProductController($productDao);
 $products = $productDao->getAllProducts();
+
+$userDao = new UserDAO($pdo);
+$userController = new UserController($userDao);
+$users = $userDao->getAllUsers();
+
+
 
 // var_dump($users);
 
 switch ($action) {
     case 'users':
-        $user = new UserController($userDao);
-        $user->displayAllUsers();
-        break;
-
-    case 'userview' :
-        $controller = new UserController($userDao);
-        $controller->displayOneUser();
-        break;  
-    
-    case 'products':
-      $controller = new ProductController($productDao);
-      $controller->displayAllProducts();
+      $userController->displayAllUsers();
       break;
 
+    case 'userview' :
+      $userController->displayOneUser();
+      break; 
+        
+    case 'adduser':
+      $userController->addUser();
+      break;
+
+    case 'deleteuser':
+      $userController->deleteUser();
+      break;
+
+    case 'updateuser':
+      $userController->updateUser();
+      break;
+    
+    case 'products':
+      $productController->displayAllProducts();
+      break;
+      
+    case 'productview' :
+          $productController->displayOneProduct();
+          break; 
+
     case 'deleteproduct':
-      $controller = new ProductController($productDao);
-      $controller->deleteProduct();
+      $productController->deleteProduct();
       break;
 
     case 'addproduct':
-      $controller = new ProductController($productDao);
-      $controller->addProduct();
+      $productController->addProduct();
       break;
 
-    case 'productview' :
-        $controller = new ProductController($productDao);
-        $controller->displayOneProduct();
-        break; 
+    case 'updateproduct':
+    $productController->updateProduct();
+    break;
 
     default:
         http_response_code(404);

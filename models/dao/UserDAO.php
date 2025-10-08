@@ -31,6 +31,24 @@ class UserDAO {
         $stmt->execute(['id' => $id]); // Tu exécutes
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
+
+     public function deleteUser(int $id) {
+        $query = "DELETE FROM `Users` WHERE id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute(['id' => $id]);
+    }
+
+    public function addUser($name, $age) {
+        $query = "INSERT INTO `Users` (name, age) VALUES (:name, :age)";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute(['name' => $name, 'age' => $age]);
+    } 
+
+    public function updateUser($id, $name, $age) {
+        $query = "UPDATE `Users` SET name = :name, age = :age WHERE id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute(['id' => $id, 'name' => $name, 'age' => $age]);
+    } 
 }
 
 
