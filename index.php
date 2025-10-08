@@ -24,43 +24,28 @@ switch ($action) {
         break;
 
     case 'userview' :
-        $id = $_GET['id'] ?? null;
-        if ($id) {
-          $userData = $userDao->getUserById($id);
-          require "views/UserView.php";
-        }
+        $controller = new UserController($userDao);
+        $controller->displayOneUser();
         break;  
     
     case 'products':
-      $product = new ProductController($productDao);
-      $product->displayAllProducts();
+      $controller = new ProductController($productDao);
+      $controller->displayAllProducts();
       break;
 
     case 'deleteproduct':
-      $id = $_GET['id'] ?? null;
-      if ($id) {
-      $productDao->deleteProduct($id);
-      } header("Location: index.php?action=products");
-      exit;
+      $controller = new ProductController($productDao);
+      $controller->deleteProduct();
       break;
 
     case 'addproduct':
-      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $name = $_POST['name '] ?? '';
-        $price = $_POST['price'] ?? 0;
-        $description = $_POST['description'] ?? '';
-        $productDao->addProduct($name, $price, $description);
-        header("Location: index.php?action=products");
-        exit;
-      } 
+      $controller = new ProductController($productDao);
+      $controller->addProduct();
       break;
 
     case 'productview' :
-        $id = $_GET['id'] ?? null;
-        if ($id) {
-          $productData = $productDao->getProductById($id);
-          require "views/ProductView.php";
-        }
+        $controller = new ProductController($productDao);
+        $controller->displayOneProduct();
         break; 
 
     default:

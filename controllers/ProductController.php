@@ -15,4 +15,33 @@ class ProductController {
         $products = $this->productDao->getAllProducts();
         require_once __DIR__ . '/../views/ProductsView.php';
     }
+
+    public function displayOneProduct() {
+            $id = $_GET['id'] ?? null;
+            if ($id) {
+            $productData = $this->productDao->getProductById($id);
+            require "views/ProductView.php";
+        }
+    }
+
+    public function addProduct() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $name = $_POST['name '] ?? '';
+        $price = $_POST['price'] ?? 0;
+        $description = $_POST['description'] ?? '';
+        $this->productDao->addProduct($name, $price, $description);
+        header("Location: index.php?action=products");
+        exit;
+        } 
+    }
+
+    public function deleteProduct() {
+        $id = $_GET['id'] ?? null;
+        if ($id) {
+        $this->productDao->deleteProduct($id);
+        } header("Location: index.php?action=products");
+        exit;
+    }
+
+
 }
